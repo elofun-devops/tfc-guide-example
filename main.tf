@@ -20,9 +20,9 @@ data "cloudflare_zone" "main" {
 }
 
 resource "cloudflare_record" "google" {
-  # for_each = google_dns_managed_zone.public-zone.name_servers
+  for_each = google_dns_managed_zone.public-zone.name_servers
   zone_id = data.cloudflare_zone.main.id
   name    = "abc"
-  value   = google_dns_managed_zone.public-zone.name_servers[0]
+  value   = each.value
   type    = "NS"
 }
