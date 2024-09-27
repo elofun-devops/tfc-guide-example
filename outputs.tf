@@ -1,11 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
-output "instance_ami" {
-  value = aws_instance.ubuntu.ami
+output dns_namespaces {
+  value = google_dns_managed_zone.public-zone.name_servers
 }
-
-output "instance_arn" {
-  value = aws_instance.ubuntu.arn
-}
-
